@@ -1,7 +1,3 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
--- Customize Mason plugins
-
 ---@type LazySpec
 return {
   -- use mason-lspconfig to configure LSP installations
@@ -12,7 +8,11 @@ return {
       -- add more things to the ensure_installed table protecting against community packs modifying it
       opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, {
         "lua_ls",
-        -- add more arguments for adding more language servers
+        "dockerls",
+        "gopls",
+        "rust_analyzer",
+        "salt_ls",
+        "yamlls",
       })
     end,
   },
@@ -25,7 +25,9 @@ return {
       opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, {
         "prettier",
         "stylua",
-        -- add more arguments for adding more null-ls sources
+        "golangci_lint",
+        "golines",
+        "rustywind",
       })
     end,
   },
@@ -36,7 +38,7 @@ return {
       -- add more things to the ensure_installed table protecting against community packs modifying it
       opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, {
         "python",
-        -- add more arguments for adding more debuggers
+        "delve",
       })
     end,
   },

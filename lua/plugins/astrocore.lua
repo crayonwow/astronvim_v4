@@ -1,9 +1,63 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
--- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
---       as this provides autocomplete and documentation while editing
+
+local utils = require "astrocore"
+local is_available = utils.is_available
+local get_icon = require("astroui").get_icon
+
+local maps = {
+  n = {
+    ["<Leader>t"] = { desc = "Test" },
+    ["<Leader>T"] = { desc = get_icon("Terminal", 1, true) .. "Terminal" },
+    ["<Leader>tn"] = { function() require("neotest").run.run() end, desc = "Nearest" },
+    ["<Leader>tt"] = { function() require("neotest").summary.toggle() end, desc = "Toggle" },
+    ["<Leader>to"] = {
+      function() require("neotest").output.open { enter = true, auto_close = true, short = true } end,
+      desc = "Toggle",
+    },
+
+    ["<C-n>"] = { "<cmd>Neotree toggle<cr>", desc = "Toggle Explorer" },
+
+    ["<Leader>e"] = false,
+    ["<Leader>o"] = false,
+    ["<Leader>tl"] = false,
+    ["<Leader>tu"] = false,
+    ["<Leader>tp"] = false,
+    ["<Leader>th"] = false,
+    ["<Leader>tf"] = false,
+    ["<Leader>tv"] = false,
+    ["<Leader>fw"] = {
+      function() require("telescope.builtin").live_grep { file_ignore_patterns = { "vendor/.*" } } end,
+      desc = "Find words",
+    },
+
+    gi = { function() require("telescope.builtin").lsp_implementations { show_line = false } end },
+    gr = { function() require("telescope.builtin").lsp_references { show_line = false } end },
+    gI = false,
+  },
+  t = {},
+}
+
+if is_available "toggleterm.nvim" then
+  maps.n["<Leader>T"] = { desc = " Terminal" }
+  if vim.fn.executable "lazygit" == 1 then
+    maps.n["<Leader>Tl"] = { function() utils.toggle_term_cmd "lazygit" end, desc = "ToggleTerm lazygit" }
+  end
+  if vim.fn.executable "node" == 1 then
+    maps.n["<Leader>Tn"] = { function() utils.toggle_term_cmd "node" end, desc = "ToggleTerm node" }
+  end
+  if vim.fn.executable "gdu" == 1 then
+    maps.n["<Leader>Tu"] = { function() utils.toggle_term_cmd "gdu" end, desc = "ToggleTerm gdu" }
+  end
+  if vim.fn.executable "btm" == 1 then
+    maps.n["<Leader>Tt"] = { function() utils.toggle_term_cmd "btm" end, desc = "ToggleTerm btm" }
+  end
+  local python = vim.fn.executable "python" == 1 and "python" or vim.fn.executable "python3" == 1 and "python3"
+  if python then maps.n["<Leader>Tp"] = { function() utils.toggle_term_cmd(python) end, desc = "ToggleTerm python" } end
+  maps.n["<Leader>Tf"] = { "<cmd>ToggleTerm direction=float<cr>", desc = "ToggleTerm float" }
+  maps.n["<Leader>Th"] = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc = "ToggleTerm horizontal split" }
+  maps.n["<Leader>Tv"] = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", desc = "ToggleTerm vertical split" }
+end
 
 ---@type LazySpec
 return {
@@ -29,7 +83,7 @@ return {
       opt = { -- vim.opt.<key>
         relativenumber = true, -- sets vim.opt.relativenumber
         number = true, -- sets vim.opt.number
-        spell = false, -- sets vim.opt.spell
+        spell = true, -- sets vim.opt.spell
         signcolumn = "auto", -- sets vim.opt.signcolumn to auto
         wrap = false, -- sets vim.opt.wrap
       },
@@ -41,34 +95,6 @@ return {
     },
     -- Mappings can be configured through AstroCore as well.
     -- NOTE: keycodes follow the casing in the vimdocs. For example, `<Leader>` must be capitalized
-    mappings = {
-      -- first key is the mode
-      n = {
-        -- second key is the lefthand side of the map
-
-        -- navigate buffer tabs with `H` and `L`
-        L = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
-        H = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
-
-        -- mappings seen under group name "Buffer"
-        ["<Leader>bD"] = {
-          function()
-            require("astroui.status.heirline").buffer_picker(
-              function(bufnr) require("astrocore.buffer").close(bufnr) end
-            )
-          end,
-          desc = "Pick to close",
-        },
-        -- tables with just a `desc` key will be registered with which-key if it's installed
-        -- this is useful for naming menus
-        ["<Leader>b"] = { desc = "Buffers" },
-        -- quick save
-        -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
-      },
-      t = {
-        -- setting a mapping to false will disable it
-        -- ["<esc>"] = false,
-      },
-    },
+    mappings = maps,
   },
 }

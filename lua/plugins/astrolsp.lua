@@ -1,5 +1,3 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- AstroLSP allows you to customize the features in AstroNvim's LSP configuration engine
 -- Configuration documentation can be found with `:h astrolsp`
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
@@ -14,7 +12,7 @@ return {
     features = {
       autoformat = true, -- enable or disable auto formatting on start
       codelens = true, -- enable/disable codelens refresh on start
-      inlay_hints = false, -- enable/disable inlay hints on start
+      inlay_hints = true, -- enable/disable inlay hints on start
       semantic_tokens = true, -- enable/disable semantic token highlighting
     },
     -- customize lsp formatting options
@@ -46,6 +44,66 @@ return {
     ---@diagnostic disable: missing-fields
     config = {
       -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
+      gopls = {
+        settings = {
+          gopls = {
+            buildFlags = { "-tags", "integration" },
+            staticcheck = false, -- golangci-lint is used instead
+            gofumpt = false, -- disabled to prevent conflicts with goimports-reviser
+            linksInHover = false,
+            analyses = {
+              appends = true,
+              asmdecl = true,
+              assign = true,
+              atomic = true,
+              bools = true,
+              buildtag = true,
+              cgocall = true,
+              composites = true,
+              copylocks = true,
+              deepequalerrors = true,
+              defers = true,
+              directive = true,
+              embed = true,
+              errorsas = true,
+              fieldalignment = true,
+              httpresponse = true,
+              ifaceassert = true,
+              loopclosure = true,
+              lostcancel = true,
+              nilfunc = true,
+              nilness = true,
+              printf = true,
+              shadow = true,
+              shift = true,
+              simplifycompositelit = true,
+              simplifyrange = true,
+              simplifyslice = true,
+              slog = true,
+              sortslice = true,
+              stdmethods = true,
+              stringintconv = true,
+              structtag = true,
+              tests = true,
+              timeformat = true,
+              unreachable = true,
+              unsafeptr = true,
+              unusedresult = true,
+              fillreturns = true,
+              nonewvars = true,
+              noresultvalues = true,
+              undeclaredname = true,
+              fillstruct = true,
+              infertypeargs = true,
+              stubmethods = true,
+              unusedparams = true,
+              unusedwrite = true,
+              useany = true,
+              unusedvariable = true,
+            },
+          },
+        },
+      },
     },
     -- customize how language servers are attached
     handlers = {
@@ -84,7 +142,6 @@ return {
     -- mappings to be set up on attaching of a language server
     mappings = {
       n = {
-        gl = { function() vim.diagnostic.open_float() end, desc = "Hover diagnostics" },
         -- a `cond` key can provided as the string of a server capability to be required to attach, or a function with `client` and `bufnr` parameters from the `on_attach` that returns a boolean
         -- gD = {
         --   function() vim.lsp.buf.declaration() end,
