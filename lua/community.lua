@@ -7,7 +7,7 @@ return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.completion.copilot-lua-cmp" },
-  -- { import = "astrocommunity.lsp.lsp-signature-nvim" },
+  { import = "astrocommunity.lsp.lsp-signature-nvim" },
   { import = "astrocommunity.colorscheme.catppuccin" },
   { import = "astrocommunity.colorscheme.nord-nvim" },
   { import = "astrocommunity.recipes.telescope-nvchad-theme" },

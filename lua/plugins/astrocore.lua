@@ -13,7 +13,7 @@ local maps = {
     ["<Leader>tt"] = { function() require("neotest").summary.toggle() end, desc = "Toggle" },
     ["<Leader>to"] = {
       function() require("neotest").output.open { enter = true, auto_close = true, short = true } end,
-      desc = "Toggle",
+      desc = "Results",
     },
 
     ["<C-n>"] = { "<cmd>Neotree toggle<cr>", desc = "Toggle Explorer" },
@@ -29,6 +29,10 @@ local maps = {
     ["<Leader>fw"] = {
       function() require("telescope.builtin").live_grep { file_ignore_patterns = { "vendor/.*" } } end,
       desc = "Find words",
+    },
+    ["<Leader>ff"] = {
+      function() require("telescope.builtin").find_files { file_ignore_patterns = { "vendor/.*" } } end,
+      desc = "Find files",
     },
 
     gi = { function() require("telescope.builtin").lsp_implementations { show_line = false } end },
