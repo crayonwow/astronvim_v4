@@ -70,4 +70,5 @@ return {
     },
     config = function() require("telescope").load_extension "goimpl" end,
   },
+  { "goolord/alpha-nvim", enabled = false },
 }
