@@ -33,7 +33,7 @@ return {
             experimental = {
               test_table = true,
             },
-            args = { "-count=1", "-timeout=5s" },
+            args = { "-count=1", "-timeout=30s", "-race" },
           },
           require "neotest-rust",
           require "neotest-python",
