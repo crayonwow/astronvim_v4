@@ -7,6 +7,7 @@ local get_icon = require("astroui").get_icon
 
 local maps = {
   n = {
+    ["<Leader>a"] = { ":noa w!<cr>", desc = "Save file without formating" },
     ["<Leader>t"] = { desc = "Test" },
     ["<Leader>T"] = { desc = get_icon("Terminal", 1, true) .. "Terminal" },
     ["<Leader>tn"] = { function() require("neotest").run.run() end, desc = "Nearest" },
