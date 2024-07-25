@@ -39,6 +39,7 @@ local maps = {
     gi = { function() require("telescope.builtin").lsp_implementations { show_line = false } end },
     gr = { function() require("telescope.builtin").lsp_references { show_line = false } end },
     gI = false,
+    ["<Leader>td"] = { function() require("dap-go").debug_test() end, desc = "Debug nearest" },
   },
   t = {},
 }

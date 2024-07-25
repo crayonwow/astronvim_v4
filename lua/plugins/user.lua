@@ -70,7 +70,7 @@ return {
     },
     config = function() require("telescope").load_extension "goimpl" end,
   },
-  { "goolord/alpha-nvim", enabled = false },
+  { "goolord/alpha-nvim", enabled = true },
   {
     "leoluz/nvim-dap-go",
     ft = "go",

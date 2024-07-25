@@ -14,7 +14,7 @@ return {
       "rust",
       "python",
       -- add more arguments for adding more treesitter parsers
-      highlight = { enable = false },
     })
+    -- opts.highlight = { enable = false }
   end,
 }

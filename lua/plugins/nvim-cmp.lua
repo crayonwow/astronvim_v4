@@ -51,6 +51,8 @@ return {
         end
       end, { "i", "s" })
 
+      opts.window = {}
+
       return opts
     end,
   },
