@@ -12,7 +12,7 @@ return {
     features = {
       autoformat = true, -- enable or disable auto formatting on start
       codelens = true, -- enable/disable codelens refresh on start
-      inlay_hints = true, -- enable/disable inlay hints on start
+      inlay_hints = false, -- enable/disable inlay hints on start
       semantic_tokens = true, -- enable/disable semantic token highlighting
     },
     -- customize lsp formatting options
@@ -51,15 +51,15 @@ return {
             staticcheck = false, -- golangci-lint is used instead
             gofumpt = false, -- disabled to prevent conflicts with goimports-reviser
             linksInHover = false,
-            hints = {
-              assignVariableTypes = true,
-              compositeLiteralFields = true,
-              compositeLiteralTypes = true,
-              constantValues = true,
-              functionTypeParameters = true,
-              parameterNames = true,
-              rangeVariableTypes = true,
-            },
+            -- hints = {
+            --   assignVariableTypes = true,
+            --   compositeLiteralFields = true,
+            --   compositeLiteralTypes = true,
+            --   constantValues = true,
+            --   functionTypeParameters = true,
+            --   parameterNames = true,
+            --   rangeVariableTypes = true,
+            -- },
             analyses = {
               appends = true,
               asmdecl = true,
