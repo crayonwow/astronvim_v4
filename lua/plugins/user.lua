@@ -128,4 +128,15 @@ return {
       }
     end,
   },
+  -- enables ssh yank
+  {
+    "ibhagwan/smartyank.nvim",
+    config = function()
+      require("smartyank").setup {
+        highlight = {
+          enabled = false, -- highlight yanked text
+        },
+      }
+    end,
+  },
 }

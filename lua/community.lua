@@ -11,9 +11,5 @@ return {
   { import = "astrocommunity.recipes.telescope-nvchad-theme" },
   { import = "astrocommunity.recipes.heirline-vscode-winbar" },
   { import = "astrocommunity.colorscheme.catppuccin" },
-  { import = "astrocommunity.colorscheme.nord-nvim" },
-  { import = "astrocommunity.colorscheme.kanagawa-nvim" },
-  { import = "astrocommunity.colorscheme.rose-pine" },
-  { import = "astrocommunity.colorscheme.tokyonight-nvim" },
-  { import = "astrocommunity.colorscheme.vscode-nvim" },
+  { import = "astrocommunity.pack.full-dadbod" },
 }
