@@ -131,6 +131,7 @@ return {
   -- enables ssh yank
   {
     "ibhagwan/smartyank.nvim",
+    enabled = true,
     config = function()
       require("smartyank").setup {
         highlight = {
