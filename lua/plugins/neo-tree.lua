@@ -7,6 +7,7 @@ return {
         hide_dotfiles = false,
         hide_gitignored = true,
       }
+      opts.window.position = "right"
       return opts
     end,
   },
