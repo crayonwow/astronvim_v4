@@ -7,8 +7,8 @@ return {
   ---@type AstroUIOpts
   opts = {
     -- change colorscheme
-    colorscheme = "rose-pine",
-    -- colorscheme = "catppuccin-latte",
+    -- colorscheme = "rose-pine",
+    colorscheme = "catppuccin-frappe",
     -- AstroUI allows you to easily modify highlight groups easily for any and all colorschemes
     -- highlights = {},
     -- Icons can be configured throughout the interface

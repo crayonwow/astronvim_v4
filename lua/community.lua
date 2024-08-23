@@ -12,5 +12,4 @@ return {
   { import = "astrocommunity.recipes.heirline-vscode-winbar" },
   { import = "astrocommunity.colorscheme.catppuccin" },
   { import = "astrocommunity.colorscheme.rose-pine" },
-  { import = "astrocommunity.pack.full-dadbod" },
 }
