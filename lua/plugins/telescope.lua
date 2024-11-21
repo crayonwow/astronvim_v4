@@ -2,7 +2,7 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     opts = function(_, opts)
-      opts.defaults.path_display = { "filename_first" }
+      opts.defaults.path_display = { "smart" }
       opts.defaults.results_title = false
       opts.pickers = {
         ind_files = {
