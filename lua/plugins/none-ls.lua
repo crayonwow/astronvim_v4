@@ -16,7 +16,9 @@ return {
       null_ls.builtins.formatting.goimports_reviser.with {
         args = { "-company-prefixes", "bitbucket.manperi.com", "$FILENAME" },
       },
-      null_ls.builtins.formatting.golines,
+      null_ls.builtins.formatting.golines.with {
+        extra_args = { "-m", "300" }, -- change to your dialect
+      },
       --
       -- lua
       null_ls.builtins.formatting.stylua,
@@ -25,6 +27,9 @@ return {
       -- rust
       null_ls.builtins.formatting.rustywind,
 
+      null_ls.builtins.formatting.sqlfluff.with {
+        extra_args = { "--dialect", "mysql" }, -- change to your dialect
+      },
       null_ls.builtins.diagnostics.sqlfluff.with {
         extra_args = { "--dialect", "mysql" }, -- change to your dialect
       },

@@ -16,10 +16,10 @@ return {
       opts.mapping["<C-h>"] = cmp.mapping(function()
         if luasnip.choice_active() then luasnip.change_choice(1) end
       end)
-      opts.mapping["<C-x>"] = cmp.mapping(function()
+      opts.mapping["<C-a>"] = cmp.mapping(function()
         if copilot.is_visible() then copilot.next() end
       end)
-      opts.mapping["<C-z>"] = cmp.mapping(function()
+      opts.mapping["<C-s>"] = cmp.mapping(function()
         if copilot.is_visible() then copilot.prev() end
       end)
       opts.mapping["<C-l>"] = cmp.mapping(function()

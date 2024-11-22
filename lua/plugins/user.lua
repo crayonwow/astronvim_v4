@@ -22,32 +22,38 @@ return {
       "fredrikaverpil/neotest-golang", -- Installation
     },
     config = function()
+      local config = { -- Specify configuration
+        go_test_args = {
+          "-v",
+          "-race",
+          "-count=1",
+          "-coverprofile=" .. vim.fn.getcwd() .. "/coverage.out",
+        },
+      }
       require("neotest").setup {
         adapters = {
-          require "neotest-golang", -- Registration
+          require "neotest-golang"(config), -- Apply configuration
+        },
+        -- See all config options with :h neotest.Config
+        discovery = {
+          -- Drastically improve performance in ginormous projects by
+          -- only AST-parsing the currently opened buffer.
+          enabled = false,
+          -- Number of workers to parse files concurrently.
+          -- A value of 0 automatically assigns number based on CPU.
+          -- Set to 1 if experiencing lag.
+          concurrent = 1,
+        },
+        running = {
+          -- Run tests concurrently when an adapter provides multiple commands to run.
+          concurrent = true,
+        },
+        summary = {
+          -- Enable/disable animation of icons.
+          animated = false,
         },
       }
     end,
-    opts = {
-      -- See all config options with :h neotest.Config
-      discovery = {
-        -- Drastically improve performance in ginormous projects by
-        -- only AST-parsing the currently opened buffer.
-        enabled = false,
-        -- Number of workers to parse files concurrently.
-        -- A value of 0 automatically assigns number based on CPU.
-        -- Set to 1 if experiencing lag.
-        concurrent = 1,
-      },
-      running = {
-        -- Run tests concurrently when an adapter provides multiple commands to run.
-        concurrent = true,
-      },
-      summary = {
-        -- Enable/disable animation of icons.
-        animated = false,
-      },
-    },
     keys = {
       { "<Leader>t", mode = { "n" }, desc = "Test" },
     },
@@ -178,5 +184,10 @@ return {
       },
     },
     cmd = "DBUI",
+  },
+  {
+    "andythigpen/nvim-coverage",
+    enabled = true,
+    config = function() require("coverage").setup {} end,
   },
 }
