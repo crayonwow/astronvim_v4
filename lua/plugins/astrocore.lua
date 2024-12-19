@@ -9,6 +9,7 @@ local maps = {
   n = {
     ["<Leader>a"] = { ":noa w!<cr>", desc = "Save file without formating" },
     ["<Leader>t"] = { desc = "Test" },
+    ["<Leader>i"] = { desc = "Utils" },
     ["<Leader>T"] = { desc = get_icon("Terminal", 1, true) .. "Terminal" },
     ["<Leader>tn"] = { function() require("neotest").run.run() end, desc = "Nearest" },
     ["<Leader>tt"] = { function() require("neotest").summary.toggle() end, desc = "Toggle" },
@@ -21,7 +22,6 @@ local maps = {
 
     ["<Leader>e"] = false,
     ["<Leader>o"] = false,
-    ["<Leader>tl"] = false,
     ["<Leader>tu"] = false,
     ["<Leader>tp"] = false,
     ["<Leader>th"] = false,
@@ -36,6 +36,10 @@ local maps = {
       desc = "Find files",
     },
 
+    ["<Leader>im"] = {
+      function() require("telescope").extensions.goimpl.goimpl {} end,
+      desc = "Implement go interface",
+    },
     gi = { function() require("telescope.builtin").lsp_implementations { show_line = false } end },
     gr = { function() require("telescope.builtin").lsp_references { show_line = false } end },
     gI = false,
