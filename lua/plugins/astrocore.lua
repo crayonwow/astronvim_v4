@@ -46,11 +46,11 @@ local maps = {
     ["<Leader>td"] = { function() require("dap-go").debug_test() end, desc = "Debug nearest" },
     ["<Leader>tc"] = {
       function() require("coverage").toggle() end,
-      desc = "Load coverage",
+      desc = "Toggle coverage",
     },
     ["<Leader>tl"] = {
       function() require("coverage").load(false) end,
-      desc = "Toggle coverage",
+      desc = "Load coverage",
     },
   },
   t = {},
