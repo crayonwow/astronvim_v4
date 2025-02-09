@@ -27,6 +27,7 @@ return {
           "-v",
           "-race",
           "-count=1",
+          "-timeout=30s",
           "-coverprofile=" .. vim.fn.getcwd() .. "/coverage.out",
         },
       }
