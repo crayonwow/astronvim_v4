@@ -191,4 +191,8 @@ return {
     enabled = true,
     config = function() require("coverage").setup {} end,
   },
+  {
+    "goolord/alpha-nvim",
+    enabled = false,
+  },
 }
