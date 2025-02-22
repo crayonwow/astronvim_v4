@@ -1,0 +1,24 @@
+return {
+  -- "L3MON4D3/LuaSnip",
+  -- config = function(_, _)
+  --   local ls = require "luasnip"
+  --   local i = ls.insert_node
+  --   local sn = ls.snipet_node
+  --   -- local t = ls.text_node
+  --   local d = ls.dynamic_node
+  --   local fmt = require("luasnip.extras.fmt").fmt
+  --   local postfix = require("luasnip.extras.postfix").postfix
+  --   local snippet = {
+  --     postfix(".ef", {
+  --       d(
+  --         1,
+  --         function(_, parent)
+  --           return sn(1, fmt('fmt.Errorf("{}' .. '", ' .. parent.snipet.evn.POSTFIX_MATCH .. ")", i(i, "message")))
+  --         end
+  --       ),
+  --     }),
+  --   }
+  --
+  --   pcall(ls.add_snipets, "go", snippet)
+  -- end,
+}
