@@ -9,14 +9,11 @@ return {
     },
     event = "InsertEnter",
     opts = function(_, opts)
-      local utils = require "astrocore"
-      local is_available = utils.is_available
       local cmp = require "cmp"
       local snip_status_ok, luasnip = pcall(require, "luasnip")
-      local copilot_avaliable = is_available "copilot.suggestion"
       local copilot_status_ok, copilot = pcall(require, "copilot.suggestion")
 
-      if copilot_avaliable then
+      if copilot_status_ok then
         opts.mapping["<C-a>"] = cmp.mapping(function()
           if copilot.is_visible() then copilot.next() end
         end)
@@ -31,7 +28,7 @@ return {
         end)
       end
       opts.mapping["<C-l>"] = cmp.mapping(function()
-        if copilot_avaliable and copilot_status_ok and copilot.is_visible() then
+        if copilot_status_ok and copilot.is_visible() then
           copilot.accept_word()
         elseif luasnip.choice_active() then
           luasnip.change_choice(1)
@@ -39,7 +36,7 @@ return {
       end)
 
       opts.mapping["<Tab>"] = cmp.mapping(function(fallback)
-        if copilot_avaliable and copilot_status_ok and copilot.is_visible() then
+        if copilot_status_ok and copilot.is_visible() then
           copilot.accept()
         elseif luasnip.expand_or_jumpable() then
           luasnip.expand_or_jump()
