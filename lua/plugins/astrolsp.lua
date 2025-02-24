@@ -10,6 +10,7 @@ return {
   opts = {
     -- Configuration table of features provided by AstroLSP
     features = {
+      signature_help = true,
       autoformat = true, -- enable or disable auto formatting on start
       codelens = true, -- enable/disable codelens refresh on start
       inlay_hints = false, -- enable/disable inlay hints on start
@@ -18,15 +19,9 @@ return {
     -- customize lsp formatting options
     formatting = {
       --   -- control auto formatting on save
-      --   format_on_save = {
-      --     enabled = true, -- enable or disable format on save globally
-      --     allow_filetypes = { -- enable format on save for specified filetypes only
-      --       -- "go",
-      --     },
-      --     ignore_filetypes = { -- disable format on save for specified filetypes
-      --       -- "python",
-      --     },
-      --   },
+      format_on_save = {
+        enabled = true, -- enable or disable format on save globally
+      },
       --   disabled = { -- disable formatting capabilities for the listed language servers
       --     -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
       --     -- "lua_ls",
