@@ -14,7 +14,7 @@ return {
       -- go
       null_ls.builtins.formatting.gofumpt,
       null_ls.builtins.formatting.goimports_reviser.with {
-        args = { "-company-prefixes", "bitbucket.manperi.com", "$FILENAME" },
+        args = { "-company-prefixes", "bitbucket.manperi.com,gitlab.space307.tech", "$FILENAME" },
       },
       null_ls.builtins.formatting.golines.with {
         extra_args = { "-m", "300" }, -- change to your dialect
