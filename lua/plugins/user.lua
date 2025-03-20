@@ -195,4 +195,8 @@ return {
     "goolord/alpha-nvim",
     enabled = false,
   },
+  {
+    "indent-blankline.nvim",
+    enabled = false,
+  },
 }
