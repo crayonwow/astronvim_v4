@@ -17,7 +17,7 @@ return {
         args = { "-company-prefixes", "bitbucket.manperi.com,gitlab.space307.tech", "$FILENAME" },
       },
       null_ls.builtins.formatting.golines.with {
-        extra_args = { "-m", "300" }, -- change to your dialect
+        extra_args = { "-m", "150" }, -- change to your dialect
       },
       --
       -- lua
