@@ -159,6 +159,7 @@ return {
         init = function()
           -- Your DBUI configuration
           vim.g.db_ui_use_nerd_fonts = 1
+          vim.g.db_ui_win_position = 'right'
         end,
       },
       {
@@ -188,7 +189,7 @@ return {
         },
       },
     },
-    cmd = "DBUI",
+    cmd = {"DBUI", "DBUIToggle"},
   },
   {
     "andythigpen/nvim-coverage",
