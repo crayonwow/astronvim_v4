@@ -42,6 +42,7 @@ return {
       gopls = {
         settings = {
           gopls = {
+            experimentalPostfixCompletions = true,
             verboseOutput = true,
             buildFlags = { "-tags", "integration" },
             staticcheck = false, -- golangci-lint is used instead
