@@ -3,7 +3,7 @@ return {
   opts = function(_, opts)
     opts.provider = "copilot"
     opts.copilot = {
-      model = "claude-3.5-sonnet",
+      model = "claude-3.7-sonnet",
       proxy = "socks5://localhost:1080",
     }
     -- opts.cursor_applying_provider = "groq"
