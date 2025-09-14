@@ -3,11 +3,11 @@
 
 ---@type LazySpec
 return {
-  {
-    "ray-x/lsp_signature.nvim",
-    event = "BufRead",
-    config = function() require("lsp_signature").setup() end,
-  },
+  -- {
+  --   "ray-x/lsp_signature.nvim",
+  --   event = "BufRead",
+  --   config = function() require("lsp_signature").setup() end,
+  -- },
   {
     "tpope/vim-surround",
     event = "BufRead",
@@ -77,7 +77,6 @@ return {
     },
     config = function() require("telescope").load_extension "goimpl" end,
   },
-  { "goolord/alpha-nvim", enabled = true },
   {
     "leoluz/nvim-dap-go",
     opts = {},
@@ -159,7 +158,7 @@ return {
         init = function()
           -- Your DBUI configuration
           vim.g.db_ui_use_nerd_fonts = 1
-          vim.g.db_ui_win_position = 'right'
+          vim.g.db_ui_win_position = "right"
         end,
       },
       {
@@ -189,19 +188,13 @@ return {
         },
       },
     },
-    cmd = {"DBUI", "DBUIToggle"},
+    cmd = { "DBUI", "DBUIToggle" },
   },
   {
     "andythigpen/nvim-coverage",
     enabled = true,
     config = function() require("coverage").setup {} end,
   },
-  {
-    "goolord/alpha-nvim",
-    enabled = false,
-  },
-  {
-    "indent-blankline.nvim",
-    enabled = false,
-  },
+  { "goolord/alpha-nvim", enabled = false },
+  { "indent-blankline.nvim", enabled = true },
 }
