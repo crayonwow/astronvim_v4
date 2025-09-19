@@ -13,17 +13,9 @@ return {
     config.sources = {
       -- go
       null_ls.builtins.formatting.gofumpt,
-      null_ls.builtins.formatting.goimports_reviser.with {
-        args = { "-company-prefixes", "bitbucket.manperi.com,gitlab.space307.tech", "$FILENAME" },
-      },
-      null_ls.builtins.formatting.golines.with {
-        extra_args = { "-m", "150" }, -- change to your dialect
-      },
-      --
+      null_ls.builtins.formatting.golines,
       -- lua
       null_ls.builtins.formatting.stylua,
-      -- python
-      -- null_ls.builtins.formatting.autopep8,
       -- rust
       null_ls.builtins.formatting.rustywind,
 

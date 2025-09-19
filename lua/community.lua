@@ -6,10 +6,11 @@
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
+  { import = "astrocommunity.pack.full-dadbod" },
   -- { import = "astrocommunity.completion.avante-nvim" },
   -- { import = "astrocommunity.completion.copilot-lua-cmp" },
   { import = "astrocommunity.lsp.lsp-signature-nvim" },
-  { import = "astrocommunity.recipes.telescope-nvchad-theme" },
+  -- { import = "astrocommunity.recipes.telescope-nvchad-theme" },
   { import = "astrocommunity.recipes.heirline-vscode-winbar" },
   { import = "astrocommunity.git.blame-nvim" },
   { import = "astrocommunity.colorscheme.catppuccin" },
