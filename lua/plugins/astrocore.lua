@@ -40,8 +40,6 @@ local function getMaps()
         function() require("coverage").load(false) end,
         desc = "Load coverage",
       },
-
-      ["<Leader>Dt"] = { "<cmd>DBUIToggle<cr>", desc = "Toggle dbui" },
     },
     t = {},
   }
