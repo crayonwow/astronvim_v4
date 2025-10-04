@@ -10,7 +10,6 @@ return {
       -- Make sure to use the names found in `:Mason`
       ensure_installed = {
         "biome",
-        "clangd",
         "delve",
         "docker-compose-language-service",
         "dockerfile-language-server",
@@ -28,10 +27,6 @@ return {
         "kube-linter",
         "lua-language-server",
         "prettier",
-        "python-lsp-server",
-        "rust-analyzer",
-        "rustywind",
-        "sonarlint-language-server",
         "sqlfluff",
         "templ",
         "terraform-ls",
