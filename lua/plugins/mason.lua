@@ -11,7 +11,6 @@ return {
         "fixjson",
         "go-debug-adapter",
         "gofumpt",
-        "goimports",
         "goimports-reviser",
         "golangci-lint",
         "golines",

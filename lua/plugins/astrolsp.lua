@@ -26,9 +26,11 @@ return {
         -- "lua_ls",
       },
       timeout_ms = 4000, -- default format timeout
+      -- async = true,
       -- filter = function(client) -- fully override the default formatting function
-      --   return true
-      -- end
+      --   print(client.name)
+      --   return client.name == "null-ls"
+      -- end,
     },
     -- enable servers that you already have installed without mason
     servers = {
@@ -43,8 +45,6 @@ return {
             experimentalPostfixCompletions = true,
             verboseOutput = true,
             buildFlags = { "-tags", "integration" },
-            staticcheck = false, -- golangci-lint is used instead
-            gofumpt = false, -- disabled to prevent conflicts with goimports-reviser
             linksInHover = false,
             -- hints = {
             --   assignVariableTypes = true,
@@ -165,6 +165,7 @@ return {
     on_attach = function(client, bufnr)
       -- this would disable semanticTokensProvider for all clients
       -- client.server_capabilities.semanticTokensProvider = nil
+      return true
     end,
   },
 }
