@@ -123,6 +123,7 @@ return {
     -- Configure buffer local auto commands to add when attaching a language server
     autocmds = {
       -- first key is the `augroup` to add the auto commands to (:h augroup)
+
       lsp_codelens_refresh = {
         -- Optional condition to create/delete auto command group
         -- can either be a string of a client capability or a function of `fun(client, bufnr): boolean`
@@ -165,6 +166,26 @@ return {
     on_attach = function(client, bufnr)
       -- this would disable semanticTokensProvider for all clients
       -- client.server_capabilities.semanticTokensProvider = nil
+      if client.name == "gopls" then
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          buffer = bufnr,
+          desc = "Organize Go imports on save",
+          callback = function()
+            local params = vim.lsp.util.make_range_params(0, client.offset_encoding)
+            params.context = { only = { "source.organizeImports" }, diagnostics = {} }
+            local result = client:request_sync("textDocument/codeAction", params, 1000, bufnr)
+            if result and result.result then
+              for _, action in ipairs(result.result) do
+                if action.edit then
+                  vim.lsp.util.apply_workspace_edit(action.edit, client.offset_encoding)
+                elseif action.command then
+                  client:exec_cmd(action.command, { bufnr = bufnr })
+                end
+              end
+            end
+          end,
+        })
+      end
       return true
     end,
   },
