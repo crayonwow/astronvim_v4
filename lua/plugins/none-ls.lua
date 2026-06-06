@@ -20,7 +20,7 @@ return {
         -- go
         null_ls.builtins.formatting.gofumpt,
         null_ls.builtins.formatting.golines.with {
-          args = { "--max-len", "200" },
+          args = { "--max-len", "500" },
         },
         -- null_ls.builtins.formatting.goimports_reviser {
         --

@@ -4,7 +4,11 @@ return {
   ---@type AstroUIOpts
   opts = {
     -- change colorscheme
-    colorscheme = "catppuccin-frappe",
+    colorscheme = "catppuccin-nvim",
+    -- light themes
+    -- colorscheme = "catppuccin-latte",
+    -- colorscheme = "tokyonight-day",
+    -- colorscheme = "github_light",
     -- AstroUI allows you to easily modify highlight groups easily for any and all colorschemes
     highlights = {
       init = { -- this table overrides highlights in all themes

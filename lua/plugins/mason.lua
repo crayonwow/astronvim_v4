@@ -12,7 +12,7 @@ return {
         "go-debug-adapter",
         "gofumpt",
         "goimports-reviser",
-        "golangci-lint",
+        -- "golangci-lint",
         "golines",
         "gomodifytags",
         "gopls",

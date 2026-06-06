@@ -86,8 +86,8 @@ return {
           },
         },
         discovery = {
-          enabled = false,
-          concurrent = 1,
+          enabled = true,
+          concurrent = 8,
         },
         running = {
           concurrent = true,
@@ -171,5 +171,19 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
     config = function() require("telescope").load_extension "goimpl" end,
+  },
+  {
+    "mistweaverco/kulala.nvim",
+    keys = {
+      { "<leader>es", desc = "Send request" },
+      { "<leader>ea", desc = "Send all requests" },
+      { "<leader>eb", desc = "Open scratchpad" },
+    },
+    ft = { "http", "rest" },
+    opts = {
+      global_keymaps = true,
+      global_keymaps_prefix = "<leader>e",
+      kulala_keymaps_prefix = "",
+    },
   },
 }
