@@ -111,22 +111,6 @@ return {
       elixirls = {
         cmd = { "/Users/s1kai/.local/share/nvim/mason/bin/elixir-ls" },
       },
-      golangci_lint_ls = {
-        cmd = { "golangci-lint-langserver" },
-        root_markers = { ".git", "go.mod" },
-        init_options = {
-          command = {
-            "go",
-            "tool",
-            "golangci-lint",
-            "run",
-            "--output.json.path",
-            "stdout",
-            "--show-stats=false",
-            "--issues-exit-code=1",
-          },
-        },
-      },
     },
     -- customize how language servers are attached
     handlers = {
