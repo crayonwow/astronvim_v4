@@ -1,12 +1,3 @@
--- Postfix snippets for Go error handling, powered by Treesitter.
---
---   err.ife   →   if err != nil { return <zeros>, err }
---   err.r     →   if err != nil { return <zeros>, fmt.Errorf("<msg>: %w", err) }
---
--- Return-type zero values are inferred from the enclosing function signature
--- at expansion time. Works with named returns, unnamed returns, and func literals.
--- Unknown named types default to nil (correct for interfaces; user fixes structs).
-
 local ls = require "luasnip"
 local f = ls.function_node
 local i = ls.insert_node
@@ -14,7 +5,23 @@ local tsf = require "luasnip.extras.treesitter_postfix"
 local ts_postfix = tsf.treesitter_postfix
 local tsnode_matcher = tsf.builtin.tsnode_matcher
 
--- ─── helpers ───────────────────────────────────────────────────────────────────
+-- local s = ls.snippet
+-- local sn = ls.snippet_node
+-- local t = ls.text_node
+-- local c = ls.choice_node
+-- local d = ls.dynamic_node
+-- local r = ls.restore_node
+-- local l = require("luasnip.extras").lambda
+-- local rep = require("luasnip.extras").rep
+-- local p = require("luasnip.extras").partial
+-- local m = require("luasnip.extras").match
+-- local n = require("luasnip.extras").nonempty
+-- local dl = require("luasnip.extras").dynamic_lambda
+-- local fmt = require("luasnip.extras.fmt").fmt
+-- local fmta = require("luasnip.extras.fmt").fmta
+-- local types = require("luasnip.util.types")
+-- local conds = require("luasnip.extras.conditions")
+-- local conds_expand = require("luasnip.extras.conditions.expand")
 
 local NUMERIC = {
   int = true,
@@ -36,8 +43,6 @@ local NUMERIC = {
   rune = true,
 }
 
---- Return the Go zero value for `type_str`.
---- `err_var` is substituted for the built-in "error" type.
 local function zero_value(type_str, err_var)
   type_str = vim.trim(type_str)
   if type_str == "error" then return err_var end
@@ -59,7 +64,6 @@ local function zero_value(type_str, err_var)
   return "nil"
 end
 
---- Walk up the treesitter tree to the nearest enclosing function node.
 local function get_enclosing_func(node)
   local cur = node
   while cur do
@@ -69,7 +73,6 @@ local function get_enclosing_func(node)
   end
 end
 
---- Collect return-type strings from a function node's `result` field.
 local function get_return_types(func_node, bufnr)
   if not func_node then return {} end
   local result_nodes = func_node:field "result"
@@ -93,20 +96,15 @@ local function get_return_types(func_node, bufnr)
   return types
 end
 
---- Return types of the function surrounding the current cursor.
 local function return_types_at_cursor()
   local bufnr = vim.api.nvim_get_current_buf()
   local node = vim.treesitter.get_node { buf = bufnr }
   return get_return_types(get_enclosing_func(node), bufnr)
 end
 
--- ─── snippets ──────────────────────────────────────────────────────────────────
-
 local match_err_node = tsnode_matcher.find_topmost_types { "identifier", "selector_expression" }
 
 return {
-
-  -- ── .ife ─────────────────────────────────────────────────────────────────────
   ts_postfix({ trig = ".ife", reparseBuffer = "live", matchTSNode = match_err_node }, {
     f(function(_, snip)
       local err_var = snip.env.LS_TSMATCH[1]
@@ -120,8 +118,6 @@ return {
       return { "if " .. err_var .. " != nil {", "\treturn " .. ret, "}" }
     end, {}),
   }),
-
-  -- ── .r (fmt.Errorf wrap) ──────────────────────────────────────────────────────
   ts_postfix({ trig = ".r", reparseBuffer = "live", matchTSNode = match_err_node }, {
     f(function(_, snip)
       local err_var = snip.env.LS_TSMATCH[1]
