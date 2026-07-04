@@ -23,7 +23,7 @@ return {
           args = { "--max-len", "500" },
         },
         -- null_ls.builtins.formatting.goimports_reviser {
-        --
+        --   args = { "-imports-order", "bitbucket.manperi.com", "$FILENAME" },
         -- },
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.formatting.rustywind,

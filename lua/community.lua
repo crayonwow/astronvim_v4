@@ -10,6 +10,7 @@ return {
   { import = "astrocommunity.test.nvim-coverage" },
   { import = "astrocommunity.lsp.lsp-signature-nvim" },
   { import = "astrocommunity.git.blame-nvim" },
+  { import = "astrocommunity.git.octo-nvim" },
 
   { import = "astrocommunity.recipes.neo-tree-dark" },
   { import = "astrocommunity.recipes.picker-nvchad-theme" },

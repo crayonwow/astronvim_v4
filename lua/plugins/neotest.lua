@@ -15,7 +15,7 @@ return {
       },
     },
     discovery = {
-      enabled = true,
+      enabled = false,
       concurrent = 8,
     },
     running = {
