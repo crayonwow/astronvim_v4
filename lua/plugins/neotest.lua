@@ -7,7 +7,7 @@ return {
         go_test_args = {
           "-v",
           "-race",
-          "-count=1",
+          "-count=4",
           "-timeout=90s",
           "-coverprofile=" .. vim.fn.getcwd() .. "/coverage.out",
         },
@@ -15,7 +15,7 @@ return {
       },
     },
     discovery = {
-      enabled = false,
+      enabled = true,
       concurrent = 8,
     },
     running = {
